@@ -30,7 +30,14 @@ class Server {
     this.app.use(express.static(path.resolve(__dirname, "../public")));
 
     // cors - todos los origenes
-    this.app.use(cors());
+    this.app.use(
+      cors({
+        origin: "*", 
+        methods: ["GET", "POST"],
+        allowedHeaders: "*", 
+        credentials: true, 
+      })
+    );
 
     // Parseo del body
     this.app.use(express.json());
